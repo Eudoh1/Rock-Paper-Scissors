@@ -3,15 +3,16 @@ function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];
 }
-  function getHumanChoice() {
-  const userInput = prompt("Enter your choice: Rock, Paper, or Scissors");
-  return userInput;
-}
+// Human choice from button clicks
+  function getHumanChoice(choice) {
+  return choice; // This will be set by button click event listeners
+  }
 
 // Global variables to keep track of scores
 let humanScore = 0;
 let computerScore = 0;
 
+// Play one round of the game
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         return "It's a tie!";
@@ -28,22 +29,37 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-        console.log(`Round ${i + 1}:`);
-        console.log(playRound(humanChoice, computerChoice));
-        console.log(`Score - You: ${humanScore}, Computer: ${computerScore}`);
+// Update UI with the current score and result
+function updateUI(message) {
+    document.getElementById('result').textContent = message;
+    document.getElementById('score').textContent = `You: ${humanScore} | Computer: ${computerScore}`;
+
+if (humanScore === 5 || computerScore === 5) {
+    const winner = humanScore === 5 ? 'You win the game' : 'Computer wins the game';
+    document.getElementById('result').textContent = winner;
+    disableButtons(); 
+}
     }
 
-    if (humanScore > computerScore) {
-        console.log("Congratulations! You win the game!");
-    } else if (humanScore < computerScore) {
-        console.log("Sorry! You lose the game.");
-    } else {
-        console.log("The game is a tie!");
-    }
+    // Disable buttons after the game ends
+function disableButtons() {
+    document.getElementById('rock').disabled = true;
+    document.getElementById('paper').disabled = true;
+    document.getElementById('scissors').disabled = true;
 }
-game();
-// This code implements a simple Rock-Paper-Scissors game where the user plays against the computer. The game consists of 5 rounds, and the scores are tracked for both the human player
+
+// Event listeners for button clicks
+document.getElementById('rock').addEventListener("click", () => {
+    const result = playRound(getHumanChoice('Rock'), getComputerChoice());
+    updateUI(result);
+});
+document.getElementById('paper').addEventListener("click", () => {
+    const result = playRound(getHumanChoice('Paper'), getComputerChoice());
+    updateUI(result);
+});
+document.getElementById('scissors').addEventListener("click", () => {
+    const result = playRound(getHumanChoice('Scissors'), getComputerChoice());
+    updateUI(result);
+});
+
+     
