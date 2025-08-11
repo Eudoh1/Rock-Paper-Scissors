@@ -1,0 +1,59 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Game container */
+#game-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Uniform button styling */
+button {
+    background: linear-gradient(135deg, #6a5acd, #483d8b);
+    color: white;
+    width: 120px; /* Fixed width so all buttons are equal */
+    padding: 12px 0; /* Vertical padding only */
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.2s ease;
+    text-align: center; /* Ensure text is centered */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #7b68ee, #5f4bb6);
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Results and score display */
+#results {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#score {
+    margin-top: 10px;
+    font-weight: bold;
+}
